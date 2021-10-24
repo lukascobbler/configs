@@ -1,0 +1,7 @@
+# These packages may cause problems with updating ungoogled chromium bin as they were set in the format "USE="" emerge ungoogled-chromium-bin"
+# Uncomment to fix the problems
+
+# media-libs/libcpx postproc
+# sys-libs/zlib minizip
+#
+# Additional fixes can be applied, look at /usr/share/doc/ungoogled-chromium-bin-94.0.4606.81/README.gentoo
