@@ -1,0 +1,6 @@
+xset r rate 225 30
+slstatus &
+pulseaudio -D
+numlockx on
+feh --bg-scale ~/wallpapers/landscape01.jpg
+exec dwm

@@ -1,0 +1,8 @@
+xset r rate 225 30
+xbacklight -set 50
+sct 4700
+slstatus &
+pulseaudio -D
+numlockx on
+feh --bg-scale ~/wallpapers/landscape01.jpg
+exec dwm
