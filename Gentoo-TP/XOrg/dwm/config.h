@@ -75,6 +75,9 @@ static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "1", "togg
 static const char *brightnessup[] = { "/usr/bin/xbacklight", "+10", NULL };
 static const char *brightnessdown[] = { "/usr/bin/xbacklight", "-10", NULL };
 
+static const char *touchpadoff[] = { "/usr/bin/synclient", "TouchpadOff=0", NULL };
+static const char *touchpadon[] = { "/usr/bin/synclient", "TouchpadOff=1", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        			function        argument */
 	{ MODKEY,                       XK_p,		      		spawn,          {.v = dmenucmd } },
@@ -113,6 +116,8 @@ static Key keys[] = {
 	{ 0,	 			XF86XK_AudioMicMute, 		spawn,		{.v = mutemic } },
 	{ 0,	 			XF86XK_MonBrightnessUp,		spawn,		{.v = brightnessup } },
 	{ 0, 				XF86XK_MonBrightnessDown,	spawn,		{.v = brightnessdown } },
+	{ 0, 				XF86XK_TouchpadOff,		spawn,		{.v = touchpadoff } },
+	{ 0, 				XF86XK_TouchpadOn,		spawn,		{.v = touchpadon } },	
 };
 
 /* button definitions */
