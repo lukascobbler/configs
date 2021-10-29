@@ -4,6 +4,5 @@ sct 4700
 slstatus &
 picom -b --vsync --backend glx
 pulseaudio -D
-numlockx on
-feh --bg-scale ~/wallpapers/landscape01.jpg
+feh --bg-scale ~/wallpapers/landscape02.png
 exec dwm 2> ~/.dwm_log
