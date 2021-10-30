@@ -2,3 +2,4 @@
 :set numberwidth=2
 :colorscheme default
 :syntax on
+:set autoindent
