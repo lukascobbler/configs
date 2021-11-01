@@ -5,4 +5,5 @@ slstatus &
 picom -b --vsync --backend glx
 pulseaudio -D
 feh --bg-scale ~/wallpapers/landscape02.png
+setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,hr,rs
 exec dwm 2> ~/.dwm_log
