@@ -64,8 +64,6 @@ static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
 
-static const char *touchpadtoggle[] = { "/bin/sh", "-c", "(/usr/bin/synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1", NULL };
-
 static Key keys[] = {
 	/* modifier                     key        			function        argument */
 	{ MODKEY,                       XK_p,		      		spawn,          {.v = dmenucmd } },
@@ -91,7 +89,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, 			focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  			tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, 			tagmon,         {.i = +1 } },
-	{ MODKEY,			XK_k,				spawn,		SHCMD("xkblayout-state set +1") },
+	{ MODKEY|ShiftMask,		XK_k,				spawn,		SHCMD("xkblayout-state set +1") },
 	TAGKEYS(                        XK_1,                      			 0)
 	TAGKEYS(                        XK_2,             	   			 1)
 	TAGKEYS(                        XK_3,                      			 2)
