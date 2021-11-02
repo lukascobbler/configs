@@ -5,7 +5,6 @@ alias untar="tar -xvzf"
 alias sz="du -sh"
 alias rm="rm -i"
 alias cd="HOME=/home/luka/testing_area cd"
-alias ranger=". ranger"
 sza() {
 	for dir in $1/*
 	do
@@ -15,3 +14,4 @@ sza() {
 chmodr () {
 	find . -type f -exec chmod $1 {} + -o -type d -exec chmod $2 {} +
 }
+alias gpaclist="cat /var/lib/portage/world"
