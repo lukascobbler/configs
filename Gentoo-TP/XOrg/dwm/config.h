@@ -27,8 +27,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      		instance 	title       		tags mask     isfloating   monitor */
-	{ "Volume control",	NULL,		"Volume control",	0,	      1,	   -1 },
-	{ "Discord" ,  		NULL,		NULL,       		1 << 3,       0,           -1 },
+	{ "discord",  		NULL,		NULL,       		1 << 4,       0,           -1 },
 	{ "Chromium",  		NULL,		NULL,       		1 << 4,       0,           -1 },
 };
 
@@ -65,17 +64,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 #include <X11/XF86keysym.h>
 
-static const char *rangercmd[] = { "st", "-e", "ranger", NULL };
-
-static const char *volumeup[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+10%", NULL };
-static const char *volumedown[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-10%", NULL };
-static const char *volumemute[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "1", "toggle", NULL };
-
-static const char *brightnessup[] = { "/usr/bin/xbacklight", "+10", NULL };
-static const char *brightnessdown[] = { "/usr/bin/xbacklight", "-10", NULL };
-
-static const char *touchpadtoggle[] = { "/bin/sh", "-c", "(/usr/bin/synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1" };
+static const char *touchpadtoggle[] = { "/bin/sh", "-c", "(/usr/bin/synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        			function        argument */
@@ -88,13 +77,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,     		 	incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,		      		setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      			setmfact,       {.f = +0.05} },
-//	{ MODKEY,                       XK_Return, 			zoom,           {0} },
+	{ MODKEY,                       XK_space,			zoom,           {0} },
 	{ MODKEY,                       XK_Tab,		    		view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      			killclient,     {0} },
 	{ MODKEY,                       XK_t,      			setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,     			setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      			setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  			setlayout,      {0} },
+//	{ MODKEY,                       XK_space,  			setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  			togglefloating, {0} },
 	{ MODKEY,                       XK_0,      			view,           {.ui = ~0 } },
 //	{ MODKEY|ShiftMask,             XK_0,      			tag,            {.ui = ~0 } },
@@ -102,20 +91,23 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, 			focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  			tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, 			tagmon,         {.i = +1 } },
+	{ MODKEY,			XK_k,				spawn,		SHCMD("xkblayout-state set +1") },
 	TAGKEYS(                        XK_1,                      			 0)
 	TAGKEYS(                        XK_2,             	   			 1)
 	TAGKEYS(                        XK_3,                      			 2)
 	TAGKEYS(                        XK_4,                     			 3)
 	TAGKEYS(                        XK_5,                     			 4)
+	{ 0,				XK_Print,			spawn,		SHCMD("scrot -z '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
 	{ MODKEY|ShiftMask,             XK_q,      			quit,           {0} },
-	{ MODKEY,			XK_e,	   			spawn,          {.v = rangercmd } },
-	{ 0,	 			XF86XK_AudioLowerVolume,	spawn,		{.v = volumedown } },
-	{ 0,	 			XF86XK_AudioRaiseVolume,	spawn,		{.v = volumeup } },
-	{ 0,	 			XF86XK_AudioMute, 		spawn,		{.v = volumemute } },
-	{ 0,	 			XF86XK_AudioMicMute, 		spawn,		{.v = mutemic } },
-	{ 0,	 			XF86XK_MonBrightnessUp,		spawn,		{.v = brightnessup } },
-	{ 0, 				XF86XK_MonBrightnessDown,	spawn,		{.v = brightnessdown } },
-	{ 0, 				XF86XK_TouchpadToggle,		spawn,		{.v = touchpadtoggle } },
+	{ MODKEY,			XK_e,	   			spawn,          SHCMD("st -e ranger") },
+	{ ControlMask|Mod1Mask,		XK_Delete,			spawn,		SHCMD("st -e htop") },
+	{ 0,	 			XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume 0 -10%") },
+	{ 0,	 			XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl set-sink-volume 0 +10%") },
+	{ 0,	 			XF86XK_AudioMute, 		spawn,		SHCMD("pactl set-sink-mute 0 toggle") },
+	{ 0,	 			XF86XK_AudioMicMute, 		spawn,		SHCMD("pactl set-source-mute 1 toggle") },
+	{ 0,	 			XF86XK_MonBrightnessUp,		spawn,		SHCMD("xbacklight +10") },
+	{ 0, 				XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -10") },
+	{ 0, 				XF86XK_TouchpadToggle,		spawn,		SHCMD("(/usr/bin/synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
 };
 
 /* button definitions */
