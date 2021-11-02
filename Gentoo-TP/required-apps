@@ -26,3 +26,4 @@ x11-base/xorg-server
 x11-libs/libXinerama
 x11-misc/picom
 x11-misc/sct
+x11-misc/xkblayout-state
