@@ -1,5 +1,5 @@
 xset r rate 225 30
-xbacklight -set 50
+xbacklight -set 30
 sct 4700
 slstatus &
 picom -b --vsync --backend glx
