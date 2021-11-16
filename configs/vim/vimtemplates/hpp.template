@@ -1,0 +1,18 @@
+/**
+ * @author      : {{NAME}} ({{EMAIL}})
+ * @file        : {{FILE}}
+ * @created     : {{TIMESTAMP}}
+ */
+
+#ifndef {{MACRO_GUARD}}
+#define {{MACRO_GUARD}}
+class {{CLASS}} {
+	public:
+		{{CLASS}}();
+		{{CLASS}}({{CLASS}} &c);
+		 {{CURSOR}}
+	private:
+
+}
+
+#endif /* end of include guard {{MACRO_GUARD}} */

@@ -3,3 +3,9 @@
 :colorscheme default
 :syntax on
 :set autoindent
+:set tw=0
+:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+:nmap <C-t> :set list!<Enter>
+
+let g:tmpl_search_paths = ['/home/luka/.vim/vimtemplates']
