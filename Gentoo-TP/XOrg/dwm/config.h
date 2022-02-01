@@ -106,6 +106,7 @@ static Key keys[] = {
 	{ 0,	 			XF86XK_MonBrightnessUp,		spawn,		SHCMD("xbacklight +10") },
 	{ 0, 				XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -10") },
 	{ 0, 				XF86XK_TouchpadToggle,		spawn,		SHCMD("(/usr/bin/synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
+	{ MODKEY|ShiftMask,		XK_p,				spawn,		SHCMD("chromium") }
 };
 
 /* button definitions */

@@ -1,10 +1,20 @@
+# Command aliases
 alias ll="ls -lah"
-alias cdd="cd /home/luka/Downloads"
 alias mkdir="mkdir -p"
 alias untar="tar -xvzf"
 alias sz="du -sh"
 alias rm="rm -i"
+alias gpaclist="cat /var/lib/portage/world"
+alias weather="curl wttr.in"
+alias py="python3"
+alias cp="cp -r"
+alias cpb="xclip -i -selection clipboard"
+
+# Shell aliases
 alias cd="HOME=/home/luka/testing_area cd"
+alias cdd="cd /home/luka/Downloads"
+
+# Functions
 sza() {
 	for dir in $1/*
 	do
@@ -14,4 +24,3 @@ sza() {
 chmodr () {
 	find . -type f -exec chmod $1 {} + -o -type d -exec chmod $2 {} +
 }
-alias gpaclist="cat /var/lib/portage/world"
