@@ -4,6 +4,7 @@ sct 4700
 slstatus &
 picom -b --vsync --backend glx
 pulseaudio -D
-feh --bg-scale ~/wallpapers/landscape02.png
+feh --bg-scale ~/wallpapers/penguin01.jpg
 setxkbmap us,hr,rs
+xrandr --output HDMI1 --right-of LVDS-1 --output LVDS1 --primary --mode 1366x768
 exec dwm 2> ~/.dwm_log
