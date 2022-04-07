@@ -1,0 +1,1 @@
+app-emulation/qemu -doc -jpeg -oss -vnc -png gtk
