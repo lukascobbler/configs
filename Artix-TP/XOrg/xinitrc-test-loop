@@ -1,0 +1,4 @@
+while true;
+do
+	dwm 2> ~/.dwm_log
+done
